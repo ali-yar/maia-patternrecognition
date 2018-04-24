@@ -9,9 +9,5 @@ function y = knn(trainSet,x,k)
   D = D(1:k,2); % keep only the labels of the k lowest distances
   k1 = sum(D(:)==1); % total samples belonging to class P
   k2 = sum(D(:)==-1); % total samples belonging to class N
-  if k1>k2
-    y = 1; % the testing sample is classified as P
-  else
-    y = -1; % the testing sample is classified as N
-  end
+  y = (k1 - k2) / k;
 end

@@ -3,7 +3,7 @@ clear, clc;
 avgTPR = 0;
 avgAcc = 0;
 
-N = 50;
+N = 3;
 for i=1:N
   init;
 
@@ -27,7 +27,7 @@ for i=1:N
 
   [R,a] = EvalROC([testGT g']); % find ROC points (FPR,TPR) and AUC
   Q = QHull(R);
-  %RChPlot(R,Q,"Bayes");
+  %RChPlot(R,Q,type + " Classifier");
   
   TPR = 0; % True Positive Rate
   FPR = 0; % False Positive Rate
@@ -45,11 +45,12 @@ for i=1:N
 
   TPR = TPR / totalTestP;
   FPR = FPR / totalTestN;
-  
-  avgTPR = avgTPR + TPR;
 
   TPRatFPR = R(find(R(:,1)==0.1)(end),2); % TPR corresponding to FPR = 0.1
+  avgTPR = avgTPR + TPRatFPR; 
 end
 
 avgTPR = avgTPR / N;
 avgAcc = avgAcc / N;
+
+RChPlot(R,Q,strcat(type, " Classifier"));

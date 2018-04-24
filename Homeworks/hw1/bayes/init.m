@@ -1,4 +1,4 @@
-type = 'linear'; % 'linear' for linear, else for quadratic
+type = 'Quadratic'; % 'linear' for linear, else for quadratic
 
 ratio = 0.75; % ratio from each class to build the training set
 
@@ -38,7 +38,7 @@ sigmaP = cov(trainSetP); % covariance matrix for class P
 sigmaN = cov(trainSetN); % covariance matrix for class N
 
 % if linear classifier, compute combined covariance
-if strcmp(type,'linear')
+if strcmp(lower(type),'linear')
   sigma = sigmaP * priorP + sigmaN * priorN; % covariance for linear classifier
   sigmaP = sigma;
   sigmaN = sigma;

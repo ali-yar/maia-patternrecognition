@@ -14,7 +14,6 @@ else
    hold on;
    plot(R(:,1),R(:,2),'-k.','MarkerSize',10);
    plot(Q(:,1),Q(:,2),'-ko','LineWidth',2,'MarkerSize',10);
-   line(0.1,0:1)
    legend('ROC curve','Convex Hull','Location','southeast');
 end
 set(gca,'XTick',0.0:0.2:1.0);
